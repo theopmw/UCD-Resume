@@ -3,7 +3,15 @@
 /* -----------------------------------------Colours */
 
 .bg-color-name-title {
-    background-color:#242424
+    background-color:#242424;
+}
+
+.bg-color-personal-info {
+    background-color: #f4f4f4;
+}
+
+.bg-color-three-reasons {
+    background-color: #fff;
 }
 
 .ui-menu-color-home {
@@ -11,11 +19,11 @@
 }
 
 .ui-menu-color-resume {
-    background-color: #A9A9A9;
+    background-color: #3498bd;
 }
 
 .ui-menu-color-contact {
-    background-color: darkslategray;
+    background-color: #e67e22;
 }
 
 .ui-menu-color-download {
@@ -45,6 +53,27 @@ h4 {
 
 }
 
+.row-table {
+    display: table;
+
+}
+
+.section-column {
+    display: table-cell;
+    padding: 0 30px 30px;
+    float: none;
+
+}
+
+.section-heading {
+    font-family: "Exo", sans-serif;
+    font-weight: 300;
+    padding: 20px 0;
+    margin-bottom: 40px;
+
+
+}
+
 
 /* -----------------------------------------Heading */
 
@@ -65,6 +94,7 @@ header {
     transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
+
     
 
 }
@@ -192,4 +222,52 @@ footer {
 
 #footer-details {
     padding: 20px;
+}
+
+/* -----------------------------------------Three Reasons */
+
+.three-reasons-icon {
+    font-size: 26px;
+    color: darkslategray;
+}
+
+.three-reasons-heading {
+    margin-bottom: 15px;
+}
+
+/* -----------------------------------------Personal Info */
+
+.personal-info-item {
+    margin-bottom: 20px;
+    display: block;
+    clear:both;
+}
+
+.personal-info-item .key,
+.personal-info-item .value {
+    padding-right: 8px;
+    display: inline-block;
+}
+
+.personal-info-item .key p,
+.personal-info-item .value p {
+    margin: 0;
+} 
+
+.personal-info-item .key {
+    width: 30%;
+    margin-right: 21px;
+    padding-top: 2px;
+    vertical-align: top;
+}
+
+.personal-info-item .key p {
+    font-weight: 700;
+}
+
+.personal-info-item .value {
+    position: relative;
+    width: 60%;
+    
+
 }
