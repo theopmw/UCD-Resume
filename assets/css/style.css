@@ -6,7 +6,8 @@
     background-color:#242424;
 }
 
-.bg-color-personal-info {
+.bg-color-personal-info,
+.bg-color-conferences {
     background-color: #f4f4f4;
 }
 
@@ -40,6 +41,14 @@
 
 .ui-menu-color-download {
     background-color: #A9A9A9;
+}
+
+.ui-menu-color-github {
+    background-color: #1c4a6c;
+}
+
+.ui-menu-color-interests {
+    background-color: #e74c3c;
 }
 /* -----------------------------------------Special paddings/margins/text */
 
