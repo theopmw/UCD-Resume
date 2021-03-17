@@ -18,10 +18,10 @@ function userInformationHTML(user) {
 function repoInformationHTML(repos) {
     if (repos.length === 0) {
         // Returns "No repos!" message if the user has 0 repos:
-        return `<div class="clearfix repo-list">No repos!</div>` 
+        return `<div class="clearfix repo-list">No repos!</div>`
     }
 
-    let listItemsHTML = repos.map(function(repo){ // The map method works like a forEach but it returns an array with the results of this function
+    let listItemsHTML = repos.map(function (repo) { // The map method works like a forEach but it returns an array with the results of this function
         // The contents of the array that we want to return are: 
         // an <li> list item 
         // inside the list item an <a> anchor tag that will take us to the actual repo when we click on it ({repo.html_url})
@@ -45,28 +45,30 @@ function repoInformationHTML(repos) {
 }
 
 function fetchGitHubInformation(event) {
+    $("#gh-user-data").html(""); // sets the #gh-user-data div to an empty string
+    $("#gh-repo-data").html(""); // sets the #gh-repo-data div to an empty string
 
     let username = $("#gh-username").val();
     if (!username) {
         $("#gh-user-data").html(`<h2>Please enter a GitHub username</h2>`);
         return;
     }
-    
+
     $("#gh-user-data").html(
         `<div id="loader"> 
             <img src="assets/css/loader.gif" alt="loading..." />
         </div>`);
 
-    $.when (
+    $.when(
         $.getJSON(`https://api.github.com/users/${username}`),
         $.getJSON(`https://api.github.com/users/${username}/repos`)
-    ).then (
+    ).then(
         function (firstResponse, secondResponse) {
             let userData = firstResponse[0];
             let repoData = secondResponse[0];
             $("#gh-user-data").html(userInformationHTML(userData));
             $("#gh-repo-data").html(repoInformationHTML(repoData));
-        }, function(errorResponse) {
+        }, function (errorResponse) {
             if (errorResponse.status === 404) {
                 $("#gh-user-data").html(
                     `<h2> no information forund for ${username}</h2>`);
@@ -75,5 +77,8 @@ function fetchGitHubInformation(event) {
                 $("gh-user-data").html(
                     `<h2>Error: ${errorResponse.responseJSON.message}</h2>`);
             }
-    })
+        })
 }
+
+$(document).ready(fetchGitHubInformation); // Displays theopmw profile when the page is loaded instead of just having an empty <div>
+// To do this, use the document.ready() function in JQuery and execute the fetchGitHubInformation() function when the DOM is fully loaded
