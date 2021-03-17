@@ -50,7 +50,7 @@ function fetchGitHubInformation(event) {
 
     let username = $("#gh-username").val();
     if (!username) {
-        $("#gh-user-data").html(`<h2>Please enter a GitHub username</h2>`);
+        $("#gh-user-data").html(`<h4>Please enter a GitHub username</h4>`);
         return;
     }
 
@@ -72,6 +72,9 @@ function fetchGitHubInformation(event) {
             if (errorResponse.status === 404) {
                 $("#gh-user-data").html(
                     `<h2> no information forund for ${username}</h2>`);
+            } else if (errorResponse.status === 403) {
+                let resetTime = new Date(errorResponse.getResponseHeader("X-RateLimit-Reset")*1000) // Retrieves header supplied by GitHub that lets us know when our API call limit will be reset, when you can use the API again and sets it in date from (it is initially presented as a unix timestamp)
+                $("#gh-user-data").html(`<h4>Too many requests, please wait until ${resetTime.toLocaleDateString()} to make another</h4>`) // Use JQuery to target the gh-user-data element, then set the HTML content of this element to an error message
             } else {
                 console.log(errorResponse);
                 $("gh-user-data").html(
